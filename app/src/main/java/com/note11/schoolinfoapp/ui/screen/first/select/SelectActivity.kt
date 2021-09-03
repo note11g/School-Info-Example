@@ -24,7 +24,6 @@ class SelectActivity : BaseActivity<ActivitySelectBinding>(R.layout.activity_sel
 
     private fun initActivity() = let { act ->
         receivedInfo = intent.getParcelableExtra("schoolInfo")!!
-        // todo : question 17. 전 액티비티에서 가져온 데이터를 이용해 반 데이터를 여기서 불러오려 합니다.
         viewModel.getClassList(receivedInfo)
 
         val gradeAdapter = HintSpinnerAdapter(act, "학년")
@@ -35,7 +34,7 @@ class SelectActivity : BaseActivity<ActivitySelectBinding>(R.layout.activity_sel
             spnSelectClass.adapter = classAdapter
 
             btnSelectNext.setOnClickListener {
-                // todo : question 18. 여기에 들어갈 함수로 적절한 것은?
+                // todo : Q9. nextStep() 함수를 실행해줍니다.
                 nextStep()
             }
         }
@@ -50,13 +49,16 @@ class SelectActivity : BaseActivity<ActivitySelectBinding>(R.layout.activity_sel
         val grade = (binding.spnSelectGrade.selectedItem as String).replace("학년", "")
         val classNum = (binding.spnSelectClass.selectedItem as String).replace("반", "")
 
+        //todo : Q10. 학년을 선택하지 않았거나, 반을 선택하지 않았을 때 다음 코드를 실행하려합니다. 아래 들어갈 코드는 무엇일까요?
         if (grade.isEmpty() || classNum.isEmpty()) {
             Toast.makeText(this, "입력하지 않은 정보가 있어요", Toast.LENGTH_SHORT).show()
             return
         }
 
+        //todo : Q11. UserModel 객체인 infu를 만들어 줍니다.
         val info = UserModel(receivedInfo, ClassModel(grade, classNum))
 
+        //todo : Q12. SetTimeActivity로 이동해주고 이때 info를 전달해줍니다.
         val intent = Intent(this, SetTimeActivity::class.java).putExtra("userInfo", info)
         startActivity(intent)
     }

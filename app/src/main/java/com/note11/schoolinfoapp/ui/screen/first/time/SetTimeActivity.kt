@@ -25,9 +25,13 @@ class SetTimeActivity : BaseActivity<ActivitySetTimeBinding>(R.layout.activity_s
     }
 
     private fun initActivity() {
+        // todo : Q13. 전 액티비티에서 가져온 데이터를 이용해 유저 데이터를 여기서 불러오려 합니다.
         receivedInfo = intent.getParcelableExtra("userInfo")!!
+
+
         binding.vm = viewModel
 
+        //todo : Q14. id가 btn_time_next 인 버튼을 눌렀을 때 endToSetUp 함수를 실행해주려 합니다.
         viewModel.classBeforeLunch.observe(this, {
             if (it.toIntOrNull() != null) {
                 viewModel.lunchEndPeriod.value = "${it.toInt() + 1}교시는 언제 시작하나요?"
@@ -38,15 +42,22 @@ class SetTimeActivity : BaseActivity<ActivitySetTimeBinding>(R.layout.activity_s
     }
 
     private fun endToSetUp() = let { act ->
+        // todo : Q.15. time을 가져온다.
         val time = viewModel.getTimesByModel()
 
+        // todo : Q16. 시간을 모두 입력하지 않았을 때, 토스트 메시지를 띄워주려 합니다. 어떤 코드가 들어가야할까요?
         if (time == null) Toast.makeText(act, "입력하지 않은 값이 존재해요", Toast.LENGTH_SHORT).show()
         else lifecycleScope.launch {
             DataUtil(act).run {
                 setUserInfo(receivedInfo)
                 setTimeInfo(time)
             }
+
+            //todo : Q.17 SplashActivity로 이동한다.
             startActivity(Intent(act, SplashActivity::class.java))
+
+
+
             ActivityCompat.finishAffinity(act)
         }
     }
