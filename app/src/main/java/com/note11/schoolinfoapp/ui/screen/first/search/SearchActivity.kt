@@ -33,13 +33,13 @@ class SearchActivity : BaseActivity<ActivitySearchBinding>(R.layout.activity_sea
         val adapter = SearchAdapter {
             //todo: Q7. 여기는 학교를 선택했을 때(학교 버튼을 눌렀을 때) 실행되는 부분입니다.
             // it 이라는 변수를 SelectActivity 에 전달하고, 화면을 넘어가려 합니다. 어떻게 해야 할까요?
-            goSelect(it)
+            goToSelect(it)
         }
         rcvSearchList.layoutManager = LinearLayoutManager(this@SearchActivity)
         rcvSearchList.adapter = adapter
     }
 
-    private fun goSelect(info: SchoolModel) {
+    private fun goToSelect(info: SchoolModel) {
         val intent = Intent(this, SelectActivity::class.java)
         intent.putExtra("schoolInfo", info)
         startActivity(intent)
