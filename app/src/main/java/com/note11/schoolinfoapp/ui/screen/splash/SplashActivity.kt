@@ -25,7 +25,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
         viewModel.loaded.observe(this, {
             // todo : Q2. it이 2라면 gotoMain 함수를 실행해주는데
             //  이때 viewModel.subjectList, viewModel.lunchList를 인수로 받는다.
-            if (it) startGotoMain()
+
         })
 
         //todo : Q1. loadData() 함수를 실행한다.
@@ -42,7 +42,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
             viewModel.getAllData(user)
         } else {
             // TODO: Q.3  WelcomeActivity 로 이동해줍니다.
-            gotoWelecom()
+
         }
     }
 
@@ -64,8 +64,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
                 it.putExtra("storedTimeInfo", DataUtil(applicationContext).getTimeInfoOnce())
                 // todo : Q4. 800ms 딜레이를 주고 MainActivity 로 이동해주기
                 //  이때 800ms가 0.8초라는거 설명해주기
-                delay(800)
-                gotoMain(it)
+
             }
         }
 

@@ -21,7 +21,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         getData()
 
         //todo : Q.18 initActivity() 함수를 실행한다.
-        initActivity()
+
     }
 
     private fun getData() {
