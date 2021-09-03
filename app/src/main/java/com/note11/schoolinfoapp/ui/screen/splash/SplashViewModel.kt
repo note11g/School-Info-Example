@@ -14,6 +14,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 import kotlin.system.measureTimeMillis
 
 class SplashViewModel : ViewModel() {
@@ -31,5 +34,30 @@ class SplashViewModel : ViewModel() {
         } catch (e: Exception) {
             Log.e("getAllData", e.toString())
         }
+    }
+
+    fun lunchListProcessing(list: List<LunchModel>?): ArrayList<LunchModel> {
+        val newList = arrayListOf<LunchModel>()
+
+        if (list == null) return newList
+
+        for (i in list.indices) if (list[i].mealCode == "2") {
+            val item = list[i]
+            val regex1 = Regex("""[\d.]""")
+            val regex2 = Regex("""<br/>""")
+            val newDate = Calendar.getInstance()
+            val newDateText = item.mealDate
+            var newMenuText = item.menu
+
+            newMenuText = regex1.replace(newMenuText, "")
+            newMenuText = regex2.replace(newMenuText, "\n")
+
+            newDate.set(newDateText.substring(0, 4).toInt(), newDateText.substring(4, 6).toInt() - 1, newDateText.substring(6, 8).toInt())
+            item.mealDate = SimpleDateFormat("M월 d일 (E)", Locale.KOREA).format(newDate.time)
+            item.menu = newMenuText
+            newList.add(item)
+        }
+
+        return newList
     }
 }

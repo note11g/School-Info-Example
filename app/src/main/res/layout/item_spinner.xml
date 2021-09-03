@@ -6,5 +6,5 @@
     android:fontFamily="@font/hsans_r"
     android:paddingHorizontal="20dp"
     android:paddingVertical="14dp"
-    android:textColorHint="@color/gray_300"
+    android:textColorHint="?attr/hintTextColor"
     android:textSize="16sp" />

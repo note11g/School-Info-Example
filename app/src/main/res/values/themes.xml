@@ -1,11 +1,13 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
+
     <style name="Theme.SchoolInfoApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/blue_400</item>
         <item name="colorPrimaryVariant">@color/blue_500</item>
         <item name="colorOnPrimary">@color/white</item>
-        <item name="colorSecondary">@color/gray_200</item>
-        <item name="colorSecondaryVariant">@color/gray_300</item>
+        <item name="colorSecondary">@color/gray_500</item>
+        <item name="colorSecondaryVariant">@color/white</item>
         <item name="colorOnSecondary">@color/black</item>
+        <item name="colorAccent">@color/gray_200</item>
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
 
         <item name="android:textColor">@color/black</item>
@@ -19,11 +21,13 @@
         <item name="android:editTextStyle">@style/HEditTextStyle</item>
 
     </style>
+
     <style name="Theme.SchoolInfoApp.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
-    <style name="Theme.SchoolInfoApp.AppBarOverlay"
-        parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.SchoolInfoApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
     <style name="Theme.SchoolInfoApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

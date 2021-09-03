@@ -1,12 +1,8 @@
 package com.note11.schoolinfoapp.ui.screen.splash
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
-import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.lifecycleScope
 import com.note11.schoolinfoapp.R
 import com.note11.schoolinfoapp.data.LunchModel
@@ -16,10 +12,8 @@ import com.note11.schoolinfoapp.ui.base.BaseActivity
 import com.note11.schoolinfoapp.ui.screen.first.welcome.WelcomeActivity
 import com.note11.schoolinfoapp.ui.screen.main.MainActivity
 import com.note11.schoolinfoapp.util.DataUtil
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlin.system.measureTimeMillis
 
 class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_splash) {
 
@@ -47,7 +41,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
     }
 
     private fun goToMain(subjectList: List<SubjectModel>?, lunchList: List<LunchModel>?) {
-        val lunchArrayList = lunchListProcessing(lunchList)
+        val lunchArrayList = viewModel.lunchListProcessing(lunchList)
         val subjectArrayList = arrayListOf<SubjectModel>()
         subjectList?.let { subjectArrayList.addAll(it) }
 
@@ -63,26 +57,4 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
             }
         }
     }
-
-    private fun lunchListProcessing(list: List<LunchModel>?): ArrayList<LunchModel> {
-        val newList = arrayListOf<LunchModel>()
-
-        if (list == null) return newList
-
-        for (i in list.indices) if (list[i].mealCode == "2") {
-            val item = list[i]
-            val regex1 = Regex("""[\d.]""")
-            val regex2 = Regex("""<br/>""")
-            var newMenuText = item.menu
-
-            newMenuText = regex1.replace(newMenuText, "")
-            newMenuText = regex2.replace(newMenuText, "\n")
-
-            item.menu = newMenuText
-            newList.add(item)
-        }
-
-        return newList
-    }
-
 }

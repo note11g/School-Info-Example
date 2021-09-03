@@ -7,9 +7,9 @@
     </style>
 
     <style name="DefaultEditTextStyle" parent="Widget.AppCompat.EditText">
-        <item name="backgroundTint">@color/white</item>
+        <item name="backgroundTint">?attr/colorSecondaryVariant</item>
         <item name="fontFamily">@font/hsans_r</item>
-        <item name="android:textColorHint">@color/gray_300</item>
+        <item name="android:textColorHint">?attr/hintTextColor</item>
         <item name="android:textSize">16sp</item>
     </style>
 

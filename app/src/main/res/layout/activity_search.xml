@@ -39,7 +39,7 @@
                 android:layout_marginTop="2dp"
                 android:gravity="center"
                 android:text="@string/search_help"
-                android:textColor="@color/gray_500"
+                android:textColor="?attr/colorSecondary"
                 android:textSize="12sp" />
 
         </LinearLayout>

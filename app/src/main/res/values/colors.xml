@@ -4,9 +4,15 @@
     <color name="gray_200">#F0F0F0</color>
     <color name="gray_300">#D0D0D0</color>
     <color name="gray_500">#ABABAB</color>
+    <color name="gray_700">#6C6C6C</color>
+    <color name="gray_800">#2D2D2D</color>
+    <color name="gray_900">#141414</color>
+
 
     <color name="blue_400">#92C9E0</color>
     <color name="blue_500">#7CBCDA</color>
+    <color name="blue_800">#49839E</color>
+
 
     <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>

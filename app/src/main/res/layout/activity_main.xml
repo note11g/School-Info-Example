@@ -25,10 +25,10 @@
                 android:layout_marginTop="40dp"
                 android:progress="@{viewModel.progress}"
                 app:donut_circle_starting_degree="-90"
-                app:donut_finished_color="@color/blue_400"
+                app:donut_finished_color="?attr/colorPrimary"
                 app:donut_finished_stroke_width="24dp"
                 app:donut_show_text="false"
-                app:donut_unfinished_color="@color/gray_200"
+                app:donut_unfinished_color="?attr/colorAccent"
                 app:donut_unfinished_stroke_width="24dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -122,7 +122,7 @@
                     bindLunchItems="@{viewModel.lunchList}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="26dp"
+                    android:layout_marginStart="26dp"
                     android:layout_marginTop="8dp"
                     tools:listitem="@layout/item_lunch" />
 
