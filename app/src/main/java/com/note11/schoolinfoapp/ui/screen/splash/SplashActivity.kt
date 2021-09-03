@@ -28,7 +28,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
             if (it) goToMain(viewModel.subjectList, viewModel.lunchList)
         })
 
-        //todo : Q1. loadData() 함수를 실행한다.
+        // todo : Q1. loadData() 함수를 실행한다.
         loadData()
     }
 

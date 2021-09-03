@@ -34,7 +34,7 @@ class SelectActivity : BaseActivity<ActivitySelectBinding>(R.layout.activity_sel
             spnSelectClass.adapter = classAdapter
 
             btnSelectNext.setOnClickListener {
-                // todo : Q9. nextStep() 함수를 실행해줍니다.
+                // todo : Q8. nextStep() 함수를 실행해줍니다.
                 nextStep()
             }
         }
@@ -50,13 +50,13 @@ class SelectActivity : BaseActivity<ActivitySelectBinding>(R.layout.activity_sel
         val classNum = (binding.spnSelectClass.selectedItem as String).replace("반", "")
 
         if (grade.isEmpty() || classNum.isEmpty()) {
-            //todo : Q10. 입력을 하라는 토스트 메시지를 띄워줍니다.
+            //todo : Q9. 입력을 하라는 토스트 메시지를 띄워줍니다.
             Toast.makeText(applicationContext, "입력하지 않은 정보가 있습니다.", Toast.LENGTH_LONG).show()
 
         } else {
             val userInfo = UserModel(receivedInfo, ClassModel(grade, classNum))
 
-            //todo : Q12. SetTimeActivity 로 이동해주고 이때 유저 정보(userInfo)를 전달해줍니다.
+            //todo : Q10. SetTimeActivity 로 이동해주고 이때 유저 정보(userInfo)를 전달해줍니다.
             goToSetTime(userInfo)
         }
     }
