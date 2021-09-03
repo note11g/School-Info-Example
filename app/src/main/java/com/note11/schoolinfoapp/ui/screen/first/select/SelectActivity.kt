@@ -35,7 +35,7 @@ class SelectActivity : BaseActivity<ActivitySelectBinding>(R.layout.activity_sel
 
             btnSelectNext.setOnClickListener {
                 // todo : Q9. nextStep() 함수를 실행해줍니다.
-
+                nextStep()
             }
         }
 
@@ -52,18 +52,15 @@ class SelectActivity : BaseActivity<ActivitySelectBinding>(R.layout.activity_sel
 
         if (grade.isEmpty() || classNum.isEmpty()) {
             //todo : Q10. 입력을 하라는 토스트 메시지를 띄워줍니다.
-
-
+            Toast.makeText(this@SelectActivity, "입력하지 않은 정보가 있습니다.", Toast.LENGTH_LONG).show()
             return
         }
 
         //todo : Q11. UserModel 객체인 infu를 만들어 줍니다.
-
-
+        val info = UserModel(receivedInfo, ClassModel(grade, classNum))
 
         //todo : Q12. SetTimeActivity로 이동해주고 이때 info를 전달해줍니다.
-
-
+        gotoSetTimePutInfo(info)
     }
 
     private fun gotoSetTimePutInfo(info : UserModel){

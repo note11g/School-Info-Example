@@ -25,9 +25,7 @@ class WelcomeActivity : BaseActivity<ActivityWelcomeBinding>(R.layout.activity_w
 
         //todo : Q5. btn_welcome_start 를 눌렀을 때 SearchActivity 로 이동하게 해줍시다.
         // 현재는 txt_welcome_content 를 눌렀을 때 SearchActivity 로 이동하게 되어있습니다.
-
-
-
+        welcomClickGotoSearch()
 
         batteryOptimizationPopup()
     }
