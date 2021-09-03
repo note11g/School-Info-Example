@@ -24,8 +24,12 @@ class SearchActivity : BaseActivity<ActivitySearchBinding>(R.layout.activity_sea
 
         viewModel.searchQuery.observe(this, {
             //todo : Q7. 입력한 학교 이름의 길이가 1 보다 길때 학교를 추천해줍시다.
-            if (it.length > 1) viewModel.search()
+            inputBigSearch(it)
         })
+    }
+
+    private fun inputBigSearch(key : String){
+        if (key.length > 1) viewModel.search()
     }
 
     private fun initRecyclerView() = with(binding) {
@@ -37,6 +41,10 @@ class SearchActivity : BaseActivity<ActivitySearchBinding>(R.layout.activity_sea
     private fun goNextStep(info: SchoolModel) {
 
         //todo: Q8. info를 전달해주면서 SelectActivity 로 화면을 전환 시켜주려 합니다. 어떻게 해야할까요?
+        gotoSelectPutInfo(info)
+    }
+
+    private fun gotoSelectPutInfo(info : SchoolModel){
         val intent = Intent(this, SelectActivity::class.java)
         intent.putExtra("schoolInfo", info)
         startActivity(intent)
