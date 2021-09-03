@@ -45,12 +45,6 @@ class SelectActivity : BaseActivity<ActivitySelectBinding>(R.layout.activity_sel
         }
     }
 
-
-    private fun inputToastMSG(text : String){
-        Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
-    }
-
-
     private fun nextStep() {
         val grade = (binding.spnSelectGrade.selectedItem as String).replace("학년", "")
         val classNum = (binding.spnSelectClass.selectedItem as String).replace("반", "")

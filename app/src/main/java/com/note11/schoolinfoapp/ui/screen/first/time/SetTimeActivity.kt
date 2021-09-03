@@ -51,16 +51,13 @@ class SetTimeActivity : BaseActivity<ActivitySetTimeBinding>(R.layout.activity_s
         binding.btnTimeNext.setOnClickListener { endToSetUp() }
     }
 
-    private fun inputTimeToastMSG(text : String){
-        Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
-    }
-
     private fun endToSetUp() = let { act ->
         // todo : Q.15. time을 가져온다.
 
 
         // todo : Q16. 시간을 모두 입력하지 않았을 때, 토스트 메시지를 띄워주려 합니다. 어떤 코드가 들어가야할까요?
         if (time == null) {
+
 
         }
         else lifecycleScope.launch {
