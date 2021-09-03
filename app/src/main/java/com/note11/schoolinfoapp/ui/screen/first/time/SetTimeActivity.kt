@@ -13,6 +13,7 @@ import com.note11.schoolinfoapp.ui.base.BaseActivity
 import com.note11.schoolinfoapp.ui.screen.main.MainActivity
 import com.note11.schoolinfoapp.ui.screen.splash.SplashActivity
 import com.note11.schoolinfoapp.util.DataUtil
+import com.note11.schoolinfoapp.util.alarm.NotificationUtil
 import kotlinx.coroutines.launch
 
 class SetTimeActivity : BaseActivity<ActivitySetTimeBinding>(R.layout.activity_set_time) {
@@ -27,7 +28,6 @@ class SetTimeActivity : BaseActivity<ActivitySetTimeBinding>(R.layout.activity_s
     private fun initActivity() {
         // todo : Q13. 전 액티비티에서 가져온 데이터를 이용해 유저 데이터를 여기서 불러오려 합니다.
         receivedInfo = intent.getParcelableExtra("userInfo")!!
-
 
         binding.vm = viewModel
 
@@ -52,11 +52,10 @@ class SetTimeActivity : BaseActivity<ActivitySetTimeBinding>(R.layout.activity_s
                 setUserInfo(receivedInfo)
                 setTimeInfo(time)
             }
+            NotificationUtil(applicationContext).notificationSetting(7, 45)
 
-            //todo : Q.17 SplashActivity로 이동한다.
+            //todo : Q.17 SplashActivity 로 이동한다.
             startActivity(Intent(act, SplashActivity::class.java))
-
-
 
             ActivityCompat.finishAffinity(act)
         }

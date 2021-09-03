@@ -28,7 +28,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
             if (it) goToMain(viewModel.subjectList, viewModel.lunchList)
         })
 
-        //todo : Q1. loadDAta() 함수를 실행한다.
+        //todo : Q1. loadData() 함수를 실행한다.
         loadData()
     }
 
@@ -38,7 +38,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
         if (user != null) {
             viewModel.getAllData(user)
         } else {
-            // TODO: Q.3  WelcomeActivity으로 이동해줍니다.
+            // TODO: Q.3  WelcomeActivity 로 이동해줍니다.
             startActivity(Intent(this@SplashActivity, WelcomeActivity::class.java))
             this@SplashActivity.finish()
         }
@@ -57,7 +57,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
                 it.putExtra("storedTimeInfo", DataUtil(applicationContext).getTimeInfoOnce())
 
 
-                // todo : Q4. 800ms 딜레이를 주고 MainActivity로 이동해주기
+                // todo : Q4. 800ms 딜레이를 주고 MainActivity 로 이동해주기
                 //  이때 800ms가 0.8초라는거 설명해주기
                 delay(800)
                 startActivity(it)
