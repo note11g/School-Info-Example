@@ -54,7 +54,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         }
 
         val layoutManager = LinearLayoutManager(this)
-
         //todo : Q20. 위 코드의 HORIZONTAL 을 VERTICAL 로 바꾸면 어떻게 될까요?
         // 한 번 예상해보고 코드를 바꿔 실행해 봅시다.
         layoutManager.orientation = LinearLayoutManager.HORIZONTAL

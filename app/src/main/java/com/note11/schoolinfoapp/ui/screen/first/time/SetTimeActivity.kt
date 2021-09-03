@@ -26,7 +26,7 @@ class SetTimeActivity : BaseActivity<ActivitySetTimeBinding>(R.layout.activity_s
         initActivity()
     }
 
-    private fun getUserInfo(){
+    private fun getUserInfo() {
         receivedInfo = intent.getParcelableExtra("userInfo")!!
     }
 
@@ -36,46 +36,39 @@ class SetTimeActivity : BaseActivity<ActivitySetTimeBinding>(R.layout.activity_s
 
         binding.vm = viewModel
 
-
         viewModel.classBeforeLunch.observe(this, {
             if (it.toIntOrNull() != null) {
                 viewModel.lunchEndPeriod.value = "${it.toInt() + 1}교시는 언제 시작하나요?"
             }
         })
 
-        //todo : Q14. id가 btn_time_next 인 버튼을 눌렀을 때 endToSetUp 함수를 실행해주려 합니다.
-        btn_time_nextClickEndToSetUp()
-    }
-
-    private fun btn_time_nextClickEndToSetUp(){
-        binding.btnTimeNext.setOnClickListener { endToSetUp() }
+        binding.btnTimeNext.setOnClickListener {
+            //todo : Q14. id가 btn_time_next 인 버튼을 눌렀을 때 endToSetUp 함수를 실행해주려 합니다.
+            endToSetUp()
+        }
     }
 
     private fun endToSetUp() = let { act ->
-        // todo : Q.15. time을 가져온다.
-        val time = viewModel.getTimesByModel()
+        // todo : Q.15. 입력한 정보를 가져온다.
+        val inputTime = viewModel.getTimesByModel()
 
-
-        // todo : Q16. 시간을 모두 입력하지 않았을 때, 토스트 메시지를 띄워주려 합니다. 어떤 코드가 들어가야할까요?
-        if (time == null) {
-            Toast.makeText(this@SetTimeActivity, "입력하지 않은 값이 있습니다.", Toast.LENGTH_LONG).show()
-
-        }
-        else lifecycleScope.launch {
+        if (inputTime == null) {
+            // todo : Q16. 시간을 모두 입력하지 않았을 때, 토스트 메시지를 띄워주려 합니다. 어떤 코드가 들어가야할까요?
+            Toast.makeText(applicationContext, "입력하지 않은 값이 있습니다.", Toast.LENGTH_LONG).show()
+        } else lifecycleScope.launch {
             DataUtil(act).run {
                 setUserInfo(receivedInfo)
-                setTimeInfo(time)
+                setTimeInfo(inputTime)
             }
             NotificationUtil(applicationContext).notificationSetting(7, 45)
 
             //todo : Q.17 SplashActivity 로 이동한다.
-            gotoSplash()
-
-            ActivityCompat.finishAffinity(act)
+            goToSplash()
         }
     }
 
-    fun gotoSplash(){
+    private fun goToSplash() {
         startActivity(Intent(this, SplashActivity::class.java))
+        ActivityCompat.finishAffinity(this)
     }
 }

@@ -49,21 +49,19 @@ class SelectActivity : BaseActivity<ActivitySelectBinding>(R.layout.activity_sel
         val grade = (binding.spnSelectGrade.selectedItem as String).replace("학년", "")
         val classNum = (binding.spnSelectClass.selectedItem as String).replace("반", "")
 
-
         if (grade.isEmpty() || classNum.isEmpty()) {
             //todo : Q10. 입력을 하라는 토스트 메시지를 띄워줍니다.
-            Toast.makeText(this@SelectActivity, "입력하지 않은 정보가 있습니다.", Toast.LENGTH_LONG).show()
-            return
+            Toast.makeText(applicationContext, "입력하지 않은 정보가 있습니다.", Toast.LENGTH_LONG).show()
+
+        } else {
+            val userInfo = UserModel(receivedInfo, ClassModel(grade, classNum))
+
+            //todo : Q12. SetTimeActivity 로 이동해주고 이때 유저 정보(userInfo)를 전달해줍니다.
+            goToSetTime(userInfo)
         }
-
-        //todo : Q11. UserModel 객체인 infu를 만들어 줍니다.
-        val info = UserModel(receivedInfo, ClassModel(grade, classNum))
-
-        //todo : Q12. SetTimeActivity로 이동해주고 이때 info를 전달해줍니다.
-        gotoSetTimePutInfo(info)
     }
 
-    private fun gotoSetTimePutInfo(info : UserModel){
+    private fun goToSetTime(info : UserModel) {
         val intent = Intent(this, SetTimeActivity::class.java).putExtra("userInfo", info)
         startActivity(intent)
     }
